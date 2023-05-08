@@ -6,7 +6,7 @@ AutoLT50.1 is an auto machine learning-empowered prediction model for grapevine 
 ### [Training and feature importance quantification](https://github.com/imbaterry11/AutoLT50.1/tree/main/Training%20and%20feature%20importance%20quantification)
 
 ### [Using model](https://github.com/imbaterry11/AutoLT50.1/tree/main/Using%20model)
-Ready-to-use model can be download at [here](https://drive.google.com/drive/folders/1TtA90lvq5PLpSi9TSDXRMa7R1vr0HbDC?usp=sharing).
+Ready-to-use model can be download at [here](https://drive.google.com/drive/folders/1ZUXO9TCKzXt9-r7k1gZ5Oj0VDRyFb12N?usp=sharing).
 
 The current model was deployed at [the Cornell grape freezing tolerance prediction app](https://grapecoldhardiness.shinyapps.io/grape_freezing_tolerance/).
 
