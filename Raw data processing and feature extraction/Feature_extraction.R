@@ -1,48 +1,42 @@
+#Due to the limited availability of hourly temperature data, this script aims to extract features from daily temperature data.
+#Load libraries
 
-library("dplyr")                                    
-library("readr")   
-library(tidyverse)
-library(ggplot2)
-library(DESeq2)
-library(ggpubr)
-library(tidyr)
-library(dplyr)
-library(WGCNA)
-library(wesanderson)
-library(pracma)
-library(data.table)
-library(weathermetrics)
-library(measurements)
-library(naniar)
-library(tidyverse)
-library(ggplot2)
-library(DESeq2)
-library(ggpubr)
-library(tidyr)
-library(dplyr)
-library(WGCNA)
-library(wesanderson)
-library(pracma)
-library(data.table)
-library(dormancyR)
-library(weathermetrics)
-library(measurements)
-library(naniar)
-library(dormancyR)
-library(chron)
-library(ggrepel)
-library(geosphere)
-library(chillR)
-library(lubridate)
-library(caret)
-library(fruclimadapt)
+require(dplyr)                                    
+require(readr)   
+require(tidyverse)
+require(ggpubr)
+require(wesanderson)
+require(pracma)
+require(data.table)
+require(weathermetrics)
+require(measurements)
+require(naniar)
+require(ggplot2)
+require(ggpubr)
+require(dormancyR)
+require(chron)
+require(ggrepel)
+require(geosphere)
+require(chillR)
+require(lubridate)
+require(caret)
+require(fruclimadapt)
 
 
-#Functions and cultivars
+#Load cultivars
 load('Cultivars.Rdata')
-all_data = read_csv('combined_NY_WA_WI_MI_BC_QC_PA_TX_for_training_new_data_with_DP_EWA_REWA_GDHs.csv')
-all_data$betterDates = as.Date(all_data$betterDates)
 
+#Load a demo raw temperature file
+#The demo temperature file includes three columns: one date column, one max daily temperature column and one min daily temperature column
+all_data = read_csv('daily_temperature_data_example.csv')
+all_data$date = mdy(all_data$date)
+colnames(all_data)
+colnames(all_data)[2:3] = c('Tmax','Tmin')
+
+
+###Functions
+
+#inverse_EWA is the function to compute REWMA temperatures
 inverse_EWA = function(datalist,window=10){
   datalist_rev = rev(datalist)
   datalist_rev_EWA = movavg(datalist_rev,n = window,type = 'e')
@@ -52,16 +46,18 @@ inverse_EWA = function(datalist,window=10){
   return(datalist_EWA)
 }
 
+#Weather_feature_generation is the function to compute all the daily and cumulative temperature descriptors
+
 Weather_feature_generation = function(df){
   
-  df$betterDates <- as.Date(df$betterDates)
+  df$date <- as.Date(df$date)
   df <- df %>% 
-    arrange(betterDates)
+    arrange(date)
   
   df = filter(df, !is.na(Tmin), !is.na(Tmax))
-  df$Year <- as.numeric(format(df$betterDates, format = "%Y"))
-  df$Month <-  as.numeric(format(df$betterDates, format = "%m"))
-  df$Day <-  as.numeric(format(df$betterDates, format = "%d"))
+  df$Year <- as.numeric(format(df$date, format = "%Y"))
+  df$Month <-  as.numeric(format(df$date, format = "%m"))
+  df$Day <-  as.numeric(format(df$date, format = "%d"))
   df <- filter(df, Month %in% c(1,2,3,4,8,9,10,11,12))
   df <-df %>%
     group_by(Year) %>%
@@ -69,10 +65,9 @@ Weather_feature_generation = function(df){
     group_by(Year) %>%
     filter(!any(ind >= 10)) %>%
     select(-ind)
-  #colnames(df)[2:3] <- c('Tmax','Tmin')
   df <- filter(df, !is.na(Tmax) | is.na(Tmin), !is.na(Tmax) & !is.na(Tmin),!Tmax > 100, !Tmin < -100, !Tmin > Tmax)
   
-  if (nrow(df) < 17) {
+  if (nrow(df) < 20) {
     df = NULL
   }
   
