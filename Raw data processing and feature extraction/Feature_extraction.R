@@ -62,7 +62,7 @@ inverse_EWA = function(datalist,window=10){
 
 #Weather_feature_generation is the function to compute all the features need for NYUS.2
 #This function requires three inputs:
-#First, a df similar with 'all_data' that have a 'date' column (properly formatted for date datatype) and two numeric columns ('tmin' and 'tmax') containing daily maximum and minimum temperatures
+#First, a df similar with 'all_data' that have a 'date' column (properly formatted for date datatype) and two numeric columns ('Tmin' and 'Tmax') containing daily maximum and minimum temperatures
 #Second, the latitude of the site of the temperature data
 #Third, your cultivar of interest for the prediction of freezing tolerance. Please copy and paste a cultivar from 'cultivars_to_choose_from'
 
