@@ -10,7 +10,7 @@ __daily_temperature_data_example_feature_extracted.csv__ is a resulting file tha
 ### [Training and feature importance quantification](https://github.com/imbaterry11/AutoLT50.1/tree/main/Training%20and%20feature%20importance%20quantification)
 __Autogluon_model_training_feature_importance.ipynb__ is a notebook for the training of NYUS.2 and feature importance quantification <br>
 __All_training_data_9_sites.csv__ is the entire LT50 dataset contributed by nine research facilities for NYUS.2 model training and testing <br>
-![LT50_dataset_composition](https://github.com/imbaterry11/NYUS.2/assets/73162287/59875cde-8834-427f-93dc-eaadcd7be584)
+![LT50_dataset_composition](images/data_collection_summary.png)
 
 ### [Using model](https://github.com/imbaterry11/AutoLT50.1/tree/main/Using%20model) 
 __NYUS.1_using_the_model.ipynb__ is a notebook for the prediction using NYUS.2 <br>
@@ -19,6 +19,6 @@ __LT50_pred.csv__ is the model prediction <br>
 ## Additional information:
 Ready-to-use model can be download at [here](https://drive.google.com/drive/folders/1ZUXO9TCKzXt9-r7k1gZ5Oj0VDRyFb12N?usp=sharing). <br>
 The current model was deployed at [the Cornell grape freezing tolerance prediction app](https://grapecoldhardiness.shinyapps.io/grape_freezing_tolerance/): <br>
-![Shiny_app_current_UI](https://github.com/imbaterry11/NYUS.2/assets/73162287/1d3ffae6-62cb-48b1-bfd5-4d1ccfce2644)
+![Shiny_app_current_UI](images/current_app_screenshot.png)
 
 Upon the use of the tools provided in this repo, please cite:  
