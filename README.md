@@ -13,7 +13,7 @@ __All_training_data_9_sites.csv__ is the entire LT50 dataset contributed by nine
 ![LT50_dataset_composition](images/data_collection_summary.png)
 
 ### [Using model](https://github.com/imbaterry11/AutoLT50.1/tree/main/Using%20model) 
-__NYUS.1_using_the_model.ipynb__ is a notebook for the prediction using NYUS.2 <br>
+__NYUS.2_using_the_model.ipynb__ is a notebook for the prediction using NYUS.2 <br>
 __daily_temperature_data_example_feature_extracted.csv__ is an example file that contains necessary features for prediction <br>
 __LT50_pred.csv__ is the model prediction <br>
 ## Additional information:
