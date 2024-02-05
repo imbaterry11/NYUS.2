@@ -21,4 +21,7 @@ Ready-to-use model can be download at [here](https://drive.google.com/drive/fold
 The current model was deployed at [the Cornell grape freezing tolerance prediction app](https://grapecoldhardiness.shinyapps.io/grape_freezing_tolerance/): <br>
 ![Shiny_app_current_UI](images/current_app_screenshot.png)
 
-Upon the use of the tools provided in this repo, please cite:  
+Upon the use of the tools provided in this repo, please cite: <br>
+Wang, Hongrui, Gaurav D Moghe, Al P Kovaleski, Markus Keller, Timothy E Martinson, A Harrison Wright, Jeffrey L Franklin, et al. 2023. “NYUS.2: An Automated Machine Learning Prediction Model for the Large-Scale Real-Time Simulation of Grapevine Freezing Tolerance in North America.” Horticulture Research, December, uhad286. https://doi.org/10.1093/hr/uhad286.
+
+
