@@ -27,7 +27,7 @@ require(fruclimadapt)
 
 
 #Load cultivars
-load('Cultivars.Rdata')
+load('Cultivars_NYUS_2_1.Rdata')
 cultivars_to_choose_from = gsub('Cultivar.','',Cultivars)
 
 #Load a demo raw temperature file
@@ -329,7 +329,7 @@ Weather_feature_generation = function(df,latitude = 43.00, cultivar = 'Riesling'
 }
 
 
-#This is an example of feature extraction
+#This is an example of feature extraction. You need to identify the latitude of the vineyard and the cultivar for the feature extraction.
 cultivars_to_choose_from
 all_data_feature_extracted <- Weather_feature_generation(all_data,latitude = 43.0606, cultivar = 'Riesling')
 
