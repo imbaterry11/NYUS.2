@@ -3,7 +3,7 @@ NYUS.2.1 is an updated version of the NYUS.2 model. NYUS.2.1 was trained using t
 
 In addition to the updated training data, we expanded the range of cultivars that the model can predict for cold hardiness. Beyond the original 45 cultivars covered in NYUS.2, we added nine more cultivars in NYUS.2.1: 'Aravelle', 'Aurora', 'Caminante blanc', 'Delaware', 'Elvira', 'Fleuratai', 'Ives', 'Sorelli', and 'Vincent'. <br>
 
-Ready-to-use NYUS.2.1 model can be download at [here](https://drive.google.com/drive/folders/1oIgga1KxZo7nBmAODzAdJVYyp6-Y2fYx?usp=drive_link). <br>
+Ready-to-use NYUS.2.1 model can be download at [here](https://cornell.box.com/s/m4wwjt4zeutwc4oc0ekye98xyasglsn1). <br>
 
 # NYUS.2
 NYUS.2 is an automated machine learning-empowered prediction model for grapevine freezing tolerance. This repo includes all the source code for feature extraction, model training and model deployment along with the original training data as parts of the __open-source__ study.
