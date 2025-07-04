@@ -5,10 +5,10 @@ In addition to the updated training data, we expanded the range of cultivars tha
 
 Ready-to-use NYUS.2.2 model can be download at [here](https://cornell.box.com/s/igaldjbb3o7e8tu0s3exo2yaao04aivb). <br>
 
-# Update 6/11/2024: NYUS.2.1
+# Update 06/11/2024: NYUS.2.1
 NYUS.2.1 is an updated version of the NYUS.2 model. NYUS.2.1 was trained using the original NYUS.2 training data (n = 10,157) along with new onsite grapevine freezing tolerance measurement data collected from various regions in NY during the 2022-2023 and 2023-2024 dormant seasons (n = 1,120). The NYUS.2.1 model was trained using the most recent version of AutoGluon (1.1.0) in Python 3.10.14. <br>
 
-In addition to the updated training data, we expanded the range of cultivars that the model can predict for cold hardiness. Beyond the original 45 cultivars covered in NYUS.2, we added nine more cultivars in NYUS.2.1: 'Aravelle', 'Aurora', 'Caminante blanc', 'Delaware', 'Elvira', 'Fleuratai', 'Ives', 'Sorelli', and 'Vincent'. <br>
+In addition to the updated training data, we expanded the range of cultivars that the model can predict for cold hardiness. Beyond the original 45 cultivars covered in NYUS.2, we added nine more cultivars in NYUS.2.1: 'Aravelle', 'Aurora', 'Caminante blanc', 'Delaware', 'Elvira', 'Fleurtai', 'Ives', 'Soreli', and 'Vincent'. <br>
 
 Ready-to-use NYUS.2.1 model can be download at [here](https://cornell.box.com/s/m4wwjt4zeutwc4oc0ekye98xyasglsn1). <br>
 
