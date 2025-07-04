@@ -1,5 +1,5 @@
 #NYUS.2 feature generation
-##Please contact hw692@cornell.edu for any additional questions.
+##Please contact hw692@cornell.edu/hongrui.wang@inrae.fr for any additional questions.
 
 #Due to the limited availability of hourly temperature data, this script aims to extract features from daily temperature data.
 #Load libraries
@@ -27,7 +27,7 @@ require(fruclimadapt)
 
 
 #Load cultivars
-load('Cultivars_NYUS_2_1.Rdata')
+load('Cultivars_NYUS_2_2.Rdata')
 cultivars_to_choose_from = gsub('Cultivar.','',Cultivars)
 
 #Load a demo raw temperature file
