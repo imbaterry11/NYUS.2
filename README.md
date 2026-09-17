@@ -44,8 +44,8 @@ Downloads:
 
 **Platform compatibility:** the published NYUS.2.3 full and light AutoGluon
 model directories are Linux-only. Load them in a Linux environment with Python
-3.10 and AutoGluon 1.4.0. They are not supported on native Windows or macOS;
-Windows users should use WSL2, Docker, or another Linux environment.
+3.10 and AutoGluon 1.4.0. They are not supported on native Windows or macOS. Windows users should use
+the released training data to train their own model.
 
 The standardized source LT50 table is included directly under
 `Training and feature importance quantification/All_training_data_NYUS_2_3_LT50.csv`.
