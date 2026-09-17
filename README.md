@@ -1,3 +1,64 @@
+# Update 09/17/2026: NYUS.2.3
+
+NYUS.2.3 updates the grapevine freezing-tolerance model with 21,743 unique LT50
+observations. The input consisted of 12,043 NYUS.2.2 records and 9,708 newly
+compiled observations; eight exact duplicates in the legacy data were removed
+before training.
+
+The row-level sources in `All_training_data_NYUS_2_3_LT50.csv` are:
+
+- NYUS.2.2 open training dataset: 12,035 final unique rows;
+- [CCOVI VineAlert Bud Hardiness](https://www.ccovi.ca/vine-alert/bud-hardiness):
+  7,978 rows;
+- [British Columbia Wine Grape Council Grape Bud Hardiness Report](https://bcwgc.org/report/grape-bud-hardiness-report/),
+  associated with Agriculture and Agri-Food Canada research: 1,076 rows;
+- Collaborative monitoring program, including Cornell and Michigan State
+  monitoring records: 654 rows.
+
+These contributing measurements are publicly available. In keeping with the
+open-source purpose of NYUS.2, NYUS.2.3 also releases the complete standardized
+LT50 table, including dates, coordinates, cultivar names, LT50 values, and
+row-level data-source labels. This allows anyone to reproduce our preparation,
+create different features, evaluate alternative algorithms, or train an
+independent model using the same open data.
+
+NYUS.2.3 uses temperature-only features generated with UFEED 0.1.1. The model
+was trained on all available observations with AutoGluon 1.4.0 and Python
+3.10.19. Date, longitude, latitude, and the text cultivar label were excluded
+from model fitting; standardized cultivar one-hot columns were retained.
+
+The cultivar vocabulary now contains 69 cultivars. The 12 additions relative
+to NYUS.2.2 are: Clarion, Crimson Pearl, Gamaret, Gamay noir, Itasca, Marsanne,
+NY06, Petit Meunier, Petit Verdot, Regent, Rkatsiteli, and Verona.
+
+The full AutoGluon ensemble had an internal validation RMSE of approximately
+1.1605 degrees C. The distilled `WeightedEnsemble_L2_DSTL` model had an internal
+validation RMSE of approximately 1.1197 degrees C. These are internal bagging
+validation estimates, not results from an independent external test set.
+
+Downloads:
+
+- [NYUS.2.3 engineered training matrix](https://cornell.box.com/s/1dyu1s116dxtkrqtoerff53hs8h42y33)
+- [NYUS.2.3 full AutoGluon model](https://cornell.box.com/s/sf0lbf73qnhilqlamkjw2y8e6vibj51k)
+- [NYUS.2.3 light distilled AutoGluon model](https://cornell.box.com/s/atm7k0ld3wtcod8fwrubcma9fvtuea8s)
+
+The standardized source LT50 table is included directly under
+`Training and feature importance quantification/All_training_data_NYUS_2_3_LT50.csv`.
+
+Important: NYUS.2.3 is not feature-compatible with NYUS.2.2. Two supported
+feature-generation approaches are provided:
+
+1. `Feature_extraction_NYUS_2_3_with_UFEED.R` downloads daily temperatures from
+   coordinates and dates through UFEED.
+2. `Feature_extraction_NYUS_2_3_from_Tmin_Tmax.R` accepts a user's own daily
+   minimum and maximum temperature observations.
+
+Both approaches use `Cultivars_NYUS_2_3.Rdata` and enforce the exact predictor
+order stored in `NYUS_2_3_model_features.csv`. User-supplied temperatures must
+be daily, continuous, correctly identified as Celsius or Fahrenheit, and must
+include sufficient weather before the desired prediction dates for rolling and
+dormant-season features.
+
 # Update 07/04/2025: NYUS.2.2
 NYUS.2.2 is an updated version of the NYUS.2 model. NYUS.2.2 was trained using the original NYUS.2.1 training data (n = 11,277) along with new onsite grapevine freezing tolerance measurement data collected from New York (Geneva, Portland and Hudson Valley), Michigan and Nova Scotia during the 2024-2025 dormant seasons (n = 766). The NYUS.2.2 model was trained using the most recent version of AutoGluon (1.3.1) in Python 3.10.16. <br>
 
@@ -37,5 +98,3 @@ The current model was deployed at [the Cornell grape freezing tolerance predicti
 
 Upon the use of the tools provided in this repo, please cite: <br>
 Wang, Hongrui, Gaurav D Moghe, Al P Kovaleski, Markus Keller, Timothy E Martinson, A Harrison Wright, Jeffrey L Franklin, et al. 2023. “NYUS.2: An Automated Machine Learning Prediction Model for the Large-Scale Real-Time Simulation of Grapevine Freezing Tolerance in North America.” Horticulture Research, December, uhad286. https://doi.org/10.1093/hr/uhad286.
-
-
