@@ -7,7 +7,7 @@ library(readr)
 
 # 1. User settings -------------------------------------------------------------
 
-input_file <- "daily_temperature_data_example.csv"
+input_file <- "daily_temperature_data_example_NYUS_2_3.csv"
 output_file <- "daily_temperature_data_example_feature_extracted_NYUS_2_3.csv"
 cultivar_file <- "Cultivars_NYUS_2_3.Rdata"
 model_feature_file <- "../Using model/NYUS_2_3_model_features.csv"
@@ -18,6 +18,12 @@ cultivar <- "Riesling"
 
 # The repository example is in degrees Fahrenheit. Use "C" for Celsius input.
 input_temperature_unit <- "F"
+
+# Only these dates are written for prediction. The input weather must begin at
+# least one calendar year earlier so rolling and dormant-season features have
+# adequate history.
+prediction_start_date <- as.Date("2024-09-01")
+prediction_end_date <- as.Date("2025-04-30")
 
 
 # 2. Read daily minimum and maximum temperature --------------------------------
@@ -60,6 +66,29 @@ if (any(!complete.cases(daily_temperature))) {
   stop("Input contains an invalid or missing date/temperature value.")
 }
 
+if (anyDuplicated(daily_temperature$Date)) {
+  stop("Input contains duplicate dates.")
+}
+
+expected_dates <- seq(
+  min(daily_temperature$Date),
+  max(daily_temperature$Date),
+  by = "day"
+)
+if (!identical(daily_temperature$Date, expected_dates)) {
+  stop("Input weather must be a continuous daily series with no missing dates.")
+}
+
+if (prediction_start_date > prediction_end_date) {
+  stop("prediction_start_date must not be after prediction_end_date.")
+}
+if (min(daily_temperature$Date) > prediction_start_date - 365L) {
+  stop("Input weather must begin at least 365 days before prediction_start_date.")
+}
+if (max(daily_temperature$Date) < prediction_end_date) {
+  stop("Input weather does not extend through prediction_end_date.")
+}
+
 
 # 3. Generate the same temperature modules used to train NYUS.2.3 -------------
 
@@ -83,6 +112,8 @@ feature_data <- UFEED::UFEED_wrap_up(
   weather_data = daily_temperature,
   weather_features = temperature_features,
   soil_features = NULL,
+  start_filter_date = prediction_start_date,
+  end_filter_date = prediction_end_date,
   clean_names = FALSE
 )
 

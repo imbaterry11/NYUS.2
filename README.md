@@ -59,6 +59,17 @@ be daily, continuous, correctly identified as Celsius or Fahrenheit, and must
 include sufficient weather before the desired prediction dates for rolling and
 dormant-season features.
 
+Before running either extractor, install UFEED 0.1.1 and the R packages
+`dplyr` and `readr`, then run the script from
+`Raw data processing and feature extraction/` (or change its file paths).
+For the POWER workflow, set `longitude`, `latitude`, `cultivar`, and the two
+prediction dates; leave `weather_data_source <- "power"`. POWER requires an
+internet connection but does not require Google Earth Engine or Python
+configuration. Only users who deliberately change the source to `power_ee`
+need to configure reticulate, Python, and Earth Engine authentication.
+The supplied `daily_temperature_data_example_NYUS_2_3.csv` is a continuous
+2023-2025 POWER series in degrees Fahrenheit for testing the own-data route.
+
 # Update 07/04/2025: NYUS.2.2
 NYUS.2.2 is an updated version of the NYUS.2 model. NYUS.2.2 was trained using the original NYUS.2.1 training data (n = 11,277) along with new onsite grapevine freezing tolerance measurement data collected from New York (Geneva, Portland and Hudson Valley), Michigan and Nova Scotia during the 2024-2025 dormant seasons (n = 766). The NYUS.2.2 model was trained using the most recent version of AutoGluon (1.3.1) in Python 3.10.16. <br>
 
